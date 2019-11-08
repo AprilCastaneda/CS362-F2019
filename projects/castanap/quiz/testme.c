@@ -16,7 +16,7 @@ char *inputString()
     int len = 6;
     char *randS = malloc(len);
     // Produce random string with inputChar()
-    for(i = 0; i < len; i++){
+    for(i = 0; i < len-1; i++){
       randS[i] = (rand() % (122-97))+97;  // Produce random string with lower case characters
     }
     // Add '\0' to end of randS
