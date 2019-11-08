@@ -14,13 +14,13 @@ char *inputString()
 {
     int i;
     int len = 6;
-    char randS[len];
+    char *randS = malloc(len);
     // Produce random string with inputChar()
     for(i = 0; i < len; i++){
       randS[i] = (rand() % (122-97))+97;  // Produce random string with lower case characters
     }
     // Add '\0' to end of randS
-    randS[len] = '\0';
+    randS[len-1] = '\0';
 
     return randS;
 }
