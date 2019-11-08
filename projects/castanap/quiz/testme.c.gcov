@@ -1,0 +1,128 @@
+        -:    0:Source:testme.c
+        -:    0:Graph:testme.gcno
+        -:    0:Data:-
+        -:    0:Runs:0
+        -:    0:Programs:0
+        -:    1:#include<stdio.h>
+        -:    2:#include<string.h>
+        -:    3:#include<stdlib.h>
+        -:    4:#include<time.h>
+        -:    5:
+function inputChar called 0 returned 0% blocks executed 0%
+    #####:    6:char inputChar()
+        -:    7:{
+        -:    8:    // Produce random character between ASCII 32 - 126
+    #####:    9:    char randC = (rand() % (126-32))+32;
+    #####:   10:    return randC;
+        -:   11:}
+        -:   12:
+function inputString called 0 returned 0% blocks executed 0%
+    #####:   13:char *inputString()
+        -:   14:{
+        -:   15:    int i;
+    #####:   16:    int len = 6;
+    #####:   17:    char randS[len];
+        -:   18:    // Produce random string with inputChar()
+    #####:   19:    for(i = 0; i < len; i++){
+branch  0 never executed
+branch  1 never executed
+    #####:   20:      randS[i] = (rand() % (122-97))+97;  // Produce random string with lower case characters
+    #####:   21:    }
+        -:   22:    // Add '\0' to end of randS
+    #####:   23:    randS[len] = '\0';
+        -:   24:
+        -:   25:    return randS;
+    #####:   26:}
+        -:   27:
+function testme called 0 returned 0% blocks executed 0%
+    #####:   28:void testme()
+        -:   29:{
+    #####:   30:  int tcCount = 0;
+        -:   31:  char *s;
+        -:   32:  char c;
+    #####:   33:  int state = 0;
+    #####:   34:  while (1)
+        -:   35:  {
+    #####:   36:    tcCount++;
+    #####:   37:    c = inputChar();
+    #####:   38:    s = inputString();
+    #####:   39:    printf("Iteration %d: c = %c, s = %s, state = %d\n", tcCount, c, s, state);
+        -:   40:
+    #####:   41:    if (c == '[' && state == 0) state = 1;
+branch  0 never executed
+branch  1 never executed
+branch  2 never executed
+branch  3 never executed
+    #####:   42:    if (c == '(' && state == 1) state = 2;
+branch  0 never executed
+branch  1 never executed
+branch  2 never executed
+branch  3 never executed
+    #####:   43:    if (c == '{' && state == 2) state = 3;
+branch  0 never executed
+branch  1 never executed
+branch  2 never executed
+branch  3 never executed
+    #####:   44:    if (c == ' '&& state == 3) state = 4;
+branch  0 never executed
+branch  1 never executed
+branch  2 never executed
+branch  3 never executed
+    #####:   45:    if (c == 'a' && state == 4) state = 5;
+branch  0 never executed
+branch  1 never executed
+branch  2 never executed
+branch  3 never executed
+    #####:   46:    if (c == 'x' && state == 5) state = 6;
+branch  0 never executed
+branch  1 never executed
+branch  2 never executed
+branch  3 never executed
+    #####:   47:    if (c == '}' && state == 6) state = 7;
+branch  0 never executed
+branch  1 never executed
+branch  2 never executed
+branch  3 never executed
+    #####:   48:    if (c == ')' && state == 7) state = 8;
+branch  0 never executed
+branch  1 never executed
+branch  2 never executed
+branch  3 never executed
+    #####:   49:    if (c == ']' && state == 8) state = 9;
+branch  0 never executed
+branch  1 never executed
+branch  2 never executed
+branch  3 never executed
+    #####:   50:    if (s[0] == 'r' && s[1] == 'e'
+branch  0 never executed
+branch  1 never executed
+branch  2 never executed
+branch  3 never executed
+    #####:   51:       && s[2] == 's' && s[3] == 'e'
+branch  0 never executed
+branch  1 never executed
+branch  2 never executed
+branch  3 never executed
+    #####:   52:       && s[4] == 't' && s[5] == '\0'
+branch  0 never executed
+branch  1 never executed
+branch  2 never executed
+branch  3 never executed
+    #####:   53:       && state == 9)
+branch  0 never executed
+branch  1 never executed
+        -:   54:    {
+    #####:   55:      printf("error ");
+    #####:   56:      exit(200);
+        -:   57:    }
+        -:   58:  }
+    #####:   59:}
+        -:   60:
+        -:   61:
+function main called 0 returned 0% blocks executed 0%
+    #####:   62:int main(int argc, char *argv[])
+        -:   63:{
+    #####:   64:    srand(time(NULL));
+    #####:   65:    testme();
+    #####:   66:    return 0;
+        -:   67:}
