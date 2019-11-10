@@ -775,7 +775,7 @@ int getCost(int cardNumber)
 			while(card_not_discarded) {
 			
 				// If estate card found	
-				if (state->hand[currentPlayer][p] = estate) {	// Bug # 1, should be ==
+				if (state->hand[currentPlayer][p] == estate) {	// Bug # 1, should be ==
 				
 					state->coins += 4;//Add 4 coins to the amount of coins
 				
@@ -864,7 +864,7 @@ int getCost(int cardNumber)
 		// If player chose to trash something other than a Treasure.
 		if (state->hand[currentPlayer][choice1] < copper || state->hand[currentPlayer][choice1] > gold)
 		{
-		    return -1;
+		    return -1; 
 		}
 
 		// If the card the player chose to gain does not exist.
@@ -880,7 +880,7 @@ int getCost(int cardNumber)
 		    return -1;
 		}
 
-		// Otherwise, gain the chosen Treasure.
+		// Otherwise, gain the chosen Treasure to hand.
 		gainCard(choice2, state, 2, currentPlayer);
 
 		// Discard mine card from hand
@@ -952,10 +952,10 @@ int getCost(int cardNumber)
 				}
 
 				// Draw 4 cards.
-				for (i = 0; i < 4; i++) // Bug # 2, using i again instead of j
-				{
+			//	for (i = 0; i < 4; i++) // Bug # 2, using i again instead of j
+			//	{
 				    drawCard(i, state);
-				}
+			//	}
 			    }
 			}
 		    }
