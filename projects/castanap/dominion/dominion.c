@@ -775,7 +775,7 @@ int getCost(int cardNumber)
 			while(card_not_discarded) {
 			
 				// If estate card found	
-				if (state->hand[currentPlayer][p] = estate) {	// Bug # 1, should be ==
+				if (state->hand[currentPlayer][p] == estate) {	// Bug # 1, should be ==
 				
 					state->coins += 4;//Add 4 coins to the amount of coins
 				
