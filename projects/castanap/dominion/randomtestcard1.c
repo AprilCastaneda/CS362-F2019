@@ -15,7 +15,7 @@ int myAssert(int expected, int actual){
 
 void checkBaron(int p, int choice1, int handP, struct gameState *G) {
     struct gameState testG;
-    memcpy (&testG, &G, sizeof(struct gameState));
+    memcpy (&testG,G, sizeof(struct gameState));
 
     // Test 1: numBuys += 1
     int buysOld = testG.numBuys;
@@ -29,7 +29,7 @@ void checkBaron(int p, int choice1, int handP, struct gameState *G) {
     }
 
     // Test 2: Discard estate.
-    memcpy (&testG, &G, sizeof(struct gameState)); 
+    memcpy (&testG,G, sizeof(struct gameState)); 
     int numCards = numHandCards(&testG);
     int curPlayer = whoseTurn(&testG);
     int found = 0;
@@ -66,11 +66,6 @@ void checkBaron(int p, int choice1, int handP, struct gameState *G) {
         }    
     }
 
-    else{
-        // Test 4
-    }
-
-
 }
 
 int main () {
@@ -95,33 +90,21 @@ int main () {
     for (n = 0; n < 5000000; n++) {
 
         seed = (rand() % (5000 - 2000) + 2000);
-        numPlayers = (rand() % 5);
+        numPlayers = (rand() % (4-1) + 1);
         handPos = (rand() % 5);
         choice1 = (rand() % 2);
 
         // Initialize kingdom cards
         for(i = 0; i < 10; i++){
-            if(i == handPos)
-                k[i] = 15;
-            else
-                k[i] = 0;
+            k[i] = 0;
         }
         found = 0;
 
         for(i = 0; i < 10; i++){
-            if(i != handPos){
-                randCard = (rand() % (26-7) + 7);
-                k[i] = randCard;
-            }
+            randCard = (rand() % (26-7) + 7);
+            k[i] = randCard;
         }
-        /*
-        if(n == 1){
-            for(i = 0; i < 10; i++){
-                printf("k card i: %d %d ", i, k[i]);
-            }
-        }
-        */
-        //printf("choice1: %d, handPos: %d\n", choice1, handPos);
+        
         initializeGame(numPlayers, k, seed, &G);
         
         // Random supplyCount for estate
@@ -132,15 +115,12 @@ int main () {
             if(i != handPos){
                 G.hand[whoseTurn(&G)][i] = (rand() % 27);
             }
+            else{
+                G.hand[whoseTurn(&G)][i] = 15;
+            }
         }       
         checkBaron(numPlayers, choice1, handPos, &G);
-        /*
-        if(n == 100){
-            for(i = 0; i < numHandCards(&G); i++){
-                printf("hand card i: %d %d ", i, G.hand[whoseTurn(&G)][i]);
-            }
-        }
-        */
+
     }
 
     printf ("ALL TESTS OK\n");

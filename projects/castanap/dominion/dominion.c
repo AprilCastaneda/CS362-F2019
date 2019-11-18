@@ -952,9 +952,9 @@ int getCost(int cardNumber)
 				}
 
 				// Draw 4 cards.
-				for (i = 0; i < 4; i++) // Bug # 2, using i again instead of j
+				for (j = 0; j < 4; j++) // Bug # 2, using i again instead of j
 				{
-				    drawCard(i, state);
+				    drawCard(j, state);
 				}
 			    }
 			}

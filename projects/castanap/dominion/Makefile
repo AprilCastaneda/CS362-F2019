@@ -24,8 +24,12 @@ runtests: testDrawCard
 randomtest1: randomtestcard1.c dominion.o rngs.o
 	gcc -o randomtest1 -g  randomtestcard1.c dominion.o rngs.o $(CFLAGS)
 
-randomtestresults: randomtest1
+randomtest2: randomtestcard2.c dominion.o rngs.o
+	gcc -o randomtest2 -g  randomtestcard2.c dominion.o rngs.o $(CFLAGS)
+
+randomtestresults: randomtest1 randomtest2
 	./randomtest1 >> randomtestresults.out
+	./randomtest2 >> randomtestresults.out
 	gcov -b -f dominion.c >> randomtestresults.out
 	cat dominion.c.gcov >> randomtestresults.out
 
